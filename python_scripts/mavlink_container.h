@@ -1,0 +1,2169 @@
+#ifndef MAVLINK_CONTAINER_HPP
+#define MAVLINK_CONTAINER_HPP
+
+#include "mavlink.h"
+#include "mavlink_msg_actuator_control_target.h"
+#include "mavlink_msg_actuator_output_status.h"
+#include "mavlink_msg_adsb_vehicle.h"
+//#include "mavlink_msg_ais_vessel.h"
+#include "mavlink_msg_altitude.h"
+#include "mavlink_msg_attitude.h"
+#include "mavlink_msg_attitude_quaternion.h"
+#include "mavlink_msg_attitude_quaternion_cov.h"
+#include "mavlink_msg_attitude_target.h"
+#include "mavlink_msg_att_pos_mocap.h"
+#include "mavlink_msg_auth_key.h"
+//#include "mavlink_msg_autopilot_state_for_gimbal_device.h"
+#include "mavlink_msg_autopilot_version.h"
+#include "mavlink_msg_battery_status.h"
+#include "mavlink_msg_button_change.h"
+#include "mavlink_msg_camera_capture_status.h"
+//#include "mavlink_msg_camera_fov_status.h"
+#include "mavlink_msg_camera_image_captured.h"
+#include "mavlink_msg_camera_information.h"
+#include "mavlink_msg_camera_settings.h"
+//#include "mavlink_msg_camera_tracking_geo_status.h"
+#include "mavlink_msg_camera_tracking_image_status.h"
+#include "mavlink_msg_camera_trigger.h"
+#include "mavlink_msg_cellular_config.h"
+#include "mavlink_msg_cellular_status.h"
+#include "mavlink_msg_change_operator_control.h"
+#include "mavlink_msg_change_operator_control_ack.h"
+#include "mavlink_msg_collision.h"
+#include "mavlink_msg_command_ack.h"
+#include "mavlink_msg_command_cancel.h"
+#include "mavlink_msg_command_int.h"
+#include "mavlink_msg_command_long.h"
+#include "mavlink_msg_component_information.h"
+#include "mavlink_msg_control_system_state.h"
+#include "mavlink_msg_data_stream.h"
+#include "mavlink_msg_data_transmission_handshake.h"
+#include "mavlink_msg_debug.h"
+#include "mavlink_msg_debug_float_array.h"
+#include "mavlink_msg_debug_vect.h"
+#include "mavlink_msg_distance_sensor.h"
+#include "mavlink_msg_efi_status.h"
+#include "mavlink_msg_encapsulated_data.h"
+#include "mavlink_msg_esc_info.h"
+#include "mavlink_msg_esc_status.h"
+#include "mavlink_msg_estimator_status.h"
+#include "mavlink_msg_extended_sys_state.h"
+#include "mavlink_msg_fence_status.h"
+#include "mavlink_msg_file_transfer_protocol.h"
+#include "mavlink_msg_flight_information.h"
+#include "mavlink_msg_follow_target.h"
+#include "mavlink_msg_generator_status.h"
+#include "mavlink_msg_gimbal_device_attitude_status.h"
+#include "mavlink_msg_gimbal_device_information.h"
+#include "mavlink_msg_gimbal_device_set_attitude.h"
+#include "mavlink_msg_gimbal_manager_information.h"
+#include "mavlink_msg_gimbal_manager_set_attitude.h"
+#include "mavlink_msg_gimbal_manager_set_manual_control.h"
+#include "mavlink_msg_gimbal_manager_set_pitchyaw.h"
+#include "mavlink_msg_gimbal_manager_status.h"
+#include "mavlink_msg_global_position_int.h"
+#include "mavlink_msg_global_position_int_cov.h"
+#include "mavlink_msg_global_vision_position_estimate.h"
+#include "mavlink_msg_gps2_raw.h"
+#include "mavlink_msg_gps2_rtk.h"
+#include "mavlink_msg_gps_global_origin.h"
+#include "mavlink_msg_gps_inject_data.h"
+#include "mavlink_msg_gps_input.h"
+#include "mavlink_msg_gps_raw_int.h"
+#include "mavlink_msg_gps_rtcm_data.h"
+#include "mavlink_msg_gps_rtk.h"
+#include "mavlink_msg_gps_status.h"
+#include "mavlink_msg_highres_imu.h"
+#include "mavlink_msg_high_latency.h"
+#include "mavlink_msg_high_latency2.h"
+#include "mavlink_msg_hil_actuator_controls.h"
+#include "mavlink_msg_hil_controls.h"
+#include "mavlink_msg_hil_gps.h"
+#include "mavlink_msg_hil_optical_flow.h"
+#include "mavlink_msg_hil_rc_inputs_raw.h"
+#include "mavlink_msg_hil_sensor.h"
+#include "mavlink_msg_hil_state.h"
+#include "mavlink_msg_hil_state_quaternion.h"
+#include "mavlink_msg_home_position.h"
+#include "mavlink_msg_isbd_link_status.h"
+#include "mavlink_msg_landing_target.h"
+#include "mavlink_msg_link_node_status.h"
+#include "mavlink_msg_local_position_ned.h"
+#include "mavlink_msg_local_position_ned_cov.h"
+#include "mavlink_msg_local_position_ned_system_global_offset.h"
+#include "mavlink_msg_logging_ack.h"
+#include "mavlink_msg_logging_data.h"
+#include "mavlink_msg_logging_data_acked.h"
+#include "mavlink_msg_log_data.h"
+#include "mavlink_msg_log_entry.h"
+#include "mavlink_msg_log_erase.h"
+#include "mavlink_msg_log_request_data.h"
+#include "mavlink_msg_log_request_end.h"
+#include "mavlink_msg_log_request_list.h"
+#include "mavlink_msg_mag_cal_report.h"
+#include "mavlink_msg_manual_control.h"
+#include "mavlink_msg_manual_setpoint.h"
+#include "mavlink_msg_memory_vect.h"
+#include "mavlink_msg_message_interval.h"
+#include "mavlink_msg_mission_ack.h"
+#include "mavlink_msg_mission_changed.h"
+#include "mavlink_msg_mission_clear_all.h"
+#include "mavlink_msg_mission_count.h"
+#include "mavlink_msg_mission_current.h"
+#include "mavlink_msg_mission_item.h"
+#include "mavlink_msg_mission_item_int.h"
+#include "mavlink_msg_mission_item_reached.h"
+#include "mavlink_msg_mission_request.h"
+#include "mavlink_msg_mission_request_int.h"
+#include "mavlink_msg_mission_request_list.h"
+#include "mavlink_msg_mission_request_partial_list.h"
+#include "mavlink_msg_mission_set_current.h"
+#include "mavlink_msg_mission_write_partial_list.h"
+#include "mavlink_msg_mount_orientation.h"
+#include "mavlink_msg_named_value_float.h"
+#include "mavlink_msg_named_value_int.h"
+#include "mavlink_msg_nav_controller_output.h"
+#include "mavlink_msg_obstacle_distance.h"
+#include "mavlink_msg_odometry.h"
+#include "mavlink_msg_onboard_computer_status.h"
+#include "mavlink_msg_open_drone_id_authentication.h"
+#include "mavlink_msg_open_drone_id_basic_id.h"
+#include "mavlink_msg_open_drone_id_location.h"
+#include "mavlink_msg_open_drone_id_message_pack.h"
+#include "mavlink_msg_open_drone_id_operator_id.h"
+#include "mavlink_msg_open_drone_id_self_id.h"
+#include "mavlink_msg_open_drone_id_system.h"
+#include "mavlink_msg_optical_flow.h"
+#include "mavlink_msg_optical_flow_rad.h"
+#include "mavlink_msg_orbit_execution_status.h"
+#include "mavlink_msg_param_ack_transaction.h"
+#include "mavlink_msg_param_ext_ack.h"
+#include "mavlink_msg_param_ext_request_list.h"
+#include "mavlink_msg_param_ext_request_read.h"
+#include "mavlink_msg_param_ext_set.h"
+#include "mavlink_msg_param_ext_value.h"
+#include "mavlink_msg_param_map_rc.h"
+#include "mavlink_msg_param_request_list.h"
+#include "mavlink_msg_param_request_read.h"
+#include "mavlink_msg_param_set.h"
+#include "mavlink_msg_param_value.h"
+#include "mavlink_msg_ping.h"
+#include "mavlink_msg_play_tune.h"
+#include "mavlink_msg_play_tune_v2.h"
+#include "mavlink_msg_position_target_global_int.h"
+#include "mavlink_msg_position_target_local_ned.h"
+#include "mavlink_msg_power_status.h"
+#include "mavlink_msg_radio_status.h"
+#include "mavlink_msg_raw_imu.h"
+#include "mavlink_msg_raw_pressure.h"
+#include "mavlink_msg_raw_rpm.h"
+#include "mavlink_msg_rc_channels.h"
+#include "mavlink_msg_rc_channels_override.h"
+#include "mavlink_msg_rc_channels_raw.h"
+#include "mavlink_msg_rc_channels_scaled.h"
+#include "mavlink_msg_request_data_stream.h"
+#include "mavlink_msg_resource_request.h"
+#include "mavlink_msg_safety_allowed_area.h"
+#include "mavlink_msg_safety_set_allowed_area.h"
+#include "mavlink_msg_scaled_imu.h"
+#include "mavlink_msg_scaled_imu2.h"
+#include "mavlink_msg_scaled_imu3.h"
+#include "mavlink_msg_scaled_pressure.h"
+#include "mavlink_msg_scaled_pressure2.h"
+#include "mavlink_msg_scaled_pressure3.h"
+#include "mavlink_msg_serial_control.h"
+#include "mavlink_msg_servo_output_raw.h"
+#include "mavlink_msg_setup_signing.h"
+#include "mavlink_msg_set_actuator_control_target.h"
+#include "mavlink_msg_set_attitude_target.h"
+#include "mavlink_msg_set_gps_global_origin.h"
+#include "mavlink_msg_set_home_position.h"
+#include "mavlink_msg_set_mode.h"
+#include "mavlink_msg_set_position_target_global_int.h"
+#include "mavlink_msg_set_position_target_local_ned.h"
+#include "mavlink_msg_sim_state.h"
+#include "mavlink_msg_smart_battery_info.h"
+#include "mavlink_msg_statustext.h"
+#include "mavlink_msg_storage_information.h"
+#include "mavlink_msg_supported_tunes.h"
+#include "mavlink_msg_system_time.h"
+#include "mavlink_msg_sys_status.h"
+#include "mavlink_msg_terrain_check.h"
+#include "mavlink_msg_terrain_data.h"
+#include "mavlink_msg_terrain_report.h"
+#include "mavlink_msg_terrain_request.h"
+#include "mavlink_msg_timesync.h"
+#include "mavlink_msg_time_estimate_to_target.h"
+#include "mavlink_msg_trajectory_representation_bezier.h"
+#include "mavlink_msg_trajectory_representation_waypoints.h"
+#include "mavlink_msg_tunnel.h"
+#include "mavlink_msg_uavcan_node_info.h"
+#include "mavlink_msg_uavcan_node_status.h"
+#include "mavlink_msg_utm_global_position.h"
+#include "mavlink_msg_v2_extension.h"
+#include "mavlink_msg_vfr_hud.h"
+#include "mavlink_msg_vibration.h"
+#include "mavlink_msg_vicon_position_estimate.h"
+#include "mavlink_msg_video_stream_information.h"
+#include "mavlink_msg_video_stream_status.h"
+#include "mavlink_msg_vision_position_estimate.h"
+#include "mavlink_msg_vision_speed_estimate.h"
+#include "mavlink_msg_wheel_distance.h"
+#include "mavlink_msg_wifi_config_ap.h"
+#include "mavlink_msg_winch_status.h"
+#include "mavlink_msg_wind_cov.h"
+#include "testsuite.h"
+#include "version.h"
+
+class CMavlinkContainer
+{
+public:
+//! constructor
+CMavlinkContainer();
+
+//! default destructor
+~CMavlinkContainer();
+
+private:
+    std::map<std::string, std::map> assign_table;
+    std::string assign_table_name;
+    assign_table get_assign_table();
+
+	mavlink_sys_status_t sys_status_m;
+		uint32_t	 onboard_control_sensors_present_m;
+		uint32_t	 onboard_control_sensors_enabled_m;
+		uint32_t	 onboard_control_sensors_health_m;
+		uint16_t	 load_m;
+		uint16_t	 voltage_battery_m;
+		int16_t	 current_battery_m;
+		int8_t	 battery_remaining_m;
+		uint16_t	 drop_rate_comm_m;
+		uint16_t	 errors_comm_m;
+		uint16_t	 errors_count1_m;
+		uint16_t	 errors_count2_m;
+		uint16_t	 errors_count3_m;
+		uint16_t	 errors_count4_m;
+
+		void set_in_ULF_struct(const mavlink_sys_status_t& sys_status_m)
+		{
+            std::string logfile = "D:/MaRPAS/mavlink/assignment_table.log";
+            std::ifstream f;
+            f.open(logfile, std::ios::in);
+            BOOST_CHECK(f);
+            BOOST_CHECK(f.is_open());
+            BOOST_CHECK(f.good());
+
+            std::string line;
+            std::map<std::string, std::string> temp;    //holds contents of file
+            while(getline(f, line))
+            {
+                std::stringstream ss(line); // stream to ease parsing lines
+                std::string key;
+                std::string v1;
+                std::string v2;
+            }
+	mavlink_system_time_t system_time_m;
+		uint64_t	 time_unix_usec_m;
+		uint32_t	 time_boot_ms_m;
+	mavlink_ping_t ping_m;
+		uint64_t	 time_usec_m;
+		uint32_t	 seq_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+	mavlink_change_operator_control_t change_operator_control_m;
+		uint8_t	 target_system_m;
+		uint8_t	 control_request_m;
+		uint8_t	 version_m;
+		char[25]	 passkey_m;
+	mavlink_change_operator_control_ack_t change_operator_control_ack_m;
+		uint8_t	 gcs_system_id_m;
+		uint8_t	 control_request_m;
+		uint8_t	 ack_m;
+	mavlink_auth_key_t auth_key_m;
+		char[32]	 key_m;
+	mavlink_link_node_status_t link_node_status_m;
+		uint64_t	 timestamp_m;
+		uint8_t	 tx_buf_m;
+		uint8_t	 rx_buf_m;
+		uint32_t	 tx_rate_m;
+		uint32_t	 rx_rate_m;
+		uint16_t	 rx_parse_err_m;
+		uint16_t	 tx_overflows_m;
+		uint16_t	 rx_overflows_m;
+		uint32_t	 messages_sent_m;
+		uint32_t	 messages_received_m;
+		uint32_t	 messages_lost_m;
+	mavlink_set_mode_t set_mode_m;
+		uint8_t	 target_system_m;
+		uint8_t	 base_mode_m;
+		uint32_t	 custom_mode_m;
+	mavlink_param_ack_transaction_t param_ack_transaction_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[16]	 param_id_m;
+		float	 param_value_m;
+		uint8_t	 param_type_m;
+		uint8_t	 param_result_m;
+	mavlink_param_request_read_t param_request_read_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[16]	 param_id_m;
+		int16_t	 param_index_m;
+	mavlink_param_request_list_t param_request_list_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+	mavlink_param_value_t param_value_m;
+		char[16]	 param_id_m;
+		float	 param_value_m;
+		uint8_t	 param_type_m;
+		uint16_t	 param_count_m;
+		uint16_t	 param_index_m;
+	mavlink_param_set_t param_set_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[16]	 param_id_m;
+		float	 param_value_m;
+		uint8_t	 param_type_m;
+	mavlink_gps_raw_int_t gps_raw_int_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 fix_type_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		uint16_t	 eph_m;
+		uint16_t	 epv_m;
+		uint16_t	 vel_m;
+		uint16_t	 cog_m;
+		uint8_t	 satellites_visible_m;
+		int32_t	 alt_ellipsoid_m;
+		uint32_t	 h_acc_m;
+		uint32_t	 v_acc_m;
+		uint32_t	 vel_acc_m;
+		uint32_t	 hdg_acc_m;
+		uint16_t	 yaw_m;
+	mavlink_gps_status_t gps_status_m;
+		uint8_t	 satellites_visible_m;
+		uint8_t[20]	 satellite_prn_m;
+		uint8_t[20]	 satellite_used_m;
+		uint8_t[20]	 satellite_elevation_m;
+		uint8_t[20]	 satellite_azimuth_m;
+		uint8_t[20]	 satellite_snr_m;
+	mavlink_scaled_imu_t scaled_imu_m;
+		uint32_t	 time_boot_ms_m;
+		int16_t	 xacc_m;
+		int16_t	 yacc_m;
+		int16_t	 zacc_m;
+		int16_t	 xgyro_m;
+		int16_t	 ygyro_m;
+		int16_t	 zgyro_m;
+		int16_t	 xmag_m;
+		int16_t	 ymag_m;
+		int16_t	 zmag_m;
+		int16_t	 temperature_m;
+	mavlink_raw_imu_t raw_imu_m;
+		uint64_t	 time_usec_m;
+		int16_t	 xacc_m;
+		int16_t	 yacc_m;
+		int16_t	 zacc_m;
+		int16_t	 xgyro_m;
+		int16_t	 ygyro_m;
+		int16_t	 zgyro_m;
+		int16_t	 xmag_m;
+		int16_t	 ymag_m;
+		int16_t	 zmag_m;
+		uint8_t	 id_m;
+		int16_t	 temperature_m;
+	mavlink_raw_pressure_t raw_pressure_m;
+		uint64_t	 time_usec_m;
+		int16_t	 press_abs_m;
+		int16_t	 press_diff1_m;
+		int16_t	 press_diff2_m;
+		int16_t	 temperature_m;
+	mavlink_scaled_pressure_t scaled_pressure_m;
+		uint32_t	 time_boot_ms_m;
+		float	 press_abs_m;
+		float	 press_diff_m;
+		int16_t	 temperature_m;
+		int16_t	 temperature_press_diff_m;
+	mavlink_attitude_t attitude_m;
+		uint32_t	 time_boot_ms_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 rollspeed_m;
+		float	 pitchspeed_m;
+		float	 yawspeed_m;
+	mavlink_attitude_quaternion_t attitude_quaternion_m;
+		uint32_t	 time_boot_ms_m;
+		float	 q1_m;
+		float	 q2_m;
+		float	 q3_m;
+		float	 q4_m;
+		float	 rollspeed_m;
+		float	 pitchspeed_m;
+		float	 yawspeed_m;
+		float[4]	 repr_offset_q_m;
+	mavlink_local_position_ned_t local_position_ned_m;
+		uint32_t	 time_boot_ms_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+	mavlink_global_position_int_t global_position_int_m;
+		uint32_t	 time_boot_ms_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		int32_t	 relative_alt_m;
+		int16_t	 vx_m;
+		int16_t	 vy_m;
+		int16_t	 vz_m;
+		uint16_t	 hdg_m;
+	mavlink_rc_channels_scaled_t rc_channels_scaled_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 port_m;
+		int16_t	 chan1_scaled_m;
+		int16_t	 chan2_scaled_m;
+		int16_t	 chan3_scaled_m;
+		int16_t	 chan4_scaled_m;
+		int16_t	 chan5_scaled_m;
+		int16_t	 chan6_scaled_m;
+		int16_t	 chan7_scaled_m;
+		int16_t	 chan8_scaled_m;
+		uint8_t	 rssi_m;
+	mavlink_rc_channels_raw_t rc_channels_raw_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 port_m;
+		uint16_t	 chan1_raw_m;
+		uint16_t	 chan2_raw_m;
+		uint16_t	 chan3_raw_m;
+		uint16_t	 chan4_raw_m;
+		uint16_t	 chan5_raw_m;
+		uint16_t	 chan6_raw_m;
+		uint16_t	 chan7_raw_m;
+		uint16_t	 chan8_raw_m;
+		uint8_t	 rssi_m;
+	mavlink_servo_output_raw_t servo_output_raw_m;
+		uint32_t	 time_usec_m;
+		uint8_t	 port_m;
+		uint16_t	 servo1_raw_m;
+		uint16_t	 servo2_raw_m;
+		uint16_t	 servo3_raw_m;
+		uint16_t	 servo4_raw_m;
+		uint16_t	 servo5_raw_m;
+		uint16_t	 servo6_raw_m;
+		uint16_t	 servo7_raw_m;
+		uint16_t	 servo8_raw_m;
+		uint16_t	 servo9_raw_m;
+		uint16_t	 servo10_raw_m;
+		uint16_t	 servo11_raw_m;
+		uint16_t	 servo12_raw_m;
+		uint16_t	 servo13_raw_m;
+		uint16_t	 servo14_raw_m;
+		uint16_t	 servo15_raw_m;
+		uint16_t	 servo16_raw_m;
+	mavlink_mission_request_partial_list_t mission_request_partial_list_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		int16_t	 start_index_m;
+		int16_t	 end_index_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_write_partial_list_t mission_write_partial_list_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		int16_t	 start_index_m;
+		int16_t	 end_index_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_item_t mission_item_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 seq_m;
+		uint8_t	 frame_m;
+		uint16_t	 command_m;
+		uint8_t	 current_m;
+		uint8_t	 autocontinue_m;
+		float	 param1_m;
+		float	 param2_m;
+		float	 param3_m;
+		float	 param4_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_request_t mission_request_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 seq_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_set_current_t mission_set_current_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 seq_m;
+	mavlink_mission_current_t mission_current_m;
+		uint16_t	 seq_m;
+	mavlink_mission_request_list_t mission_request_list_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_count_t mission_count_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 count_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_clear_all_t mission_clear_all_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_item_reached_t mission_item_reached_m;
+		uint16_t	 seq_m;
+	mavlink_mission_ack_t mission_ack_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 type_m;
+		uint8_t	 mission_type_m;
+	mavlink_set_gps_global_origin_t set_gps_global_origin_m;
+		uint8_t	 target_system_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		int32_t	 altitude_m;
+		uint64_t	 time_usec_m;
+	mavlink_gps_global_origin_t gps_global_origin_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		int32_t	 altitude_m;
+		uint64_t	 time_usec_m;
+	mavlink_param_map_rc_t param_map_rc_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[16]	 param_id_m;
+		int16_t	 param_index_m;
+		uint8_t	 parameter_rc_channel_index_m;
+		float	 param_value0_m;
+		float	 scale_m;
+		float	 param_value_min_m;
+		float	 param_value_max_m;
+	mavlink_mission_request_int_t mission_request_int_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 seq_m;
+		uint8_t	 mission_type_m;
+	mavlink_mission_changed_t mission_changed_m;
+		int16_t	 start_index_m;
+		int16_t	 end_index_m;
+		uint8_t	 origin_sysid_m;
+		uint8_t	 origin_compid_m;
+		uint8_t	 mission_type_m;
+	mavlink_safety_set_allowed_area_t safety_set_allowed_area_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 frame_m;
+		float	 p1x_m;
+		float	 p1y_m;
+		float	 p1z_m;
+		float	 p2x_m;
+		float	 p2y_m;
+		float	 p2z_m;
+	mavlink_safety_allowed_area_t safety_allowed_area_m;
+		uint8_t	 frame_m;
+		float	 p1x_m;
+		float	 p1y_m;
+		float	 p1z_m;
+		float	 p2x_m;
+		float	 p2y_m;
+		float	 p2z_m;
+	mavlink_attitude_quaternion_cov_t attitude_quaternion_cov_m;
+		uint64_t	 time_usec_m;
+		float[4]	 q_m;
+		float	 rollspeed_m;
+		float	 pitchspeed_m;
+		float	 yawspeed_m;
+		float[9]	 covariance_m;
+	mavlink_nav_controller_output_t nav_controller_output_m;
+		float	 nav_roll_m;
+		float	 nav_pitch_m;
+		int16_t	 nav_bearing_m;
+		int16_t	 target_bearing_m;
+		uint16_t	 wp_dist_m;
+		float	 alt_error_m;
+		float	 aspd_error_m;
+		float	 xtrack_error_m;
+	mavlink_global_position_int_cov_t global_position_int_cov_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 estimator_type_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		int32_t	 relative_alt_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float[36]	 covariance_m;
+	mavlink_local_position_ned_cov_t local_position_ned_cov_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 estimator_type_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float	 ax_m;
+		float	 ay_m;
+		float	 az_m;
+		float[45]	 covariance_m;
+	mavlink_rc_channels_t rc_channels_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 chancount_m;
+		uint16_t	 chan1_raw_m;
+		uint16_t	 chan2_raw_m;
+		uint16_t	 chan3_raw_m;
+		uint16_t	 chan4_raw_m;
+		uint16_t	 chan5_raw_m;
+		uint16_t	 chan6_raw_m;
+		uint16_t	 chan7_raw_m;
+		uint16_t	 chan8_raw_m;
+		uint16_t	 chan9_raw_m;
+		uint16_t	 chan10_raw_m;
+		uint16_t	 chan11_raw_m;
+		uint16_t	 chan12_raw_m;
+		uint16_t	 chan13_raw_m;
+		uint16_t	 chan14_raw_m;
+		uint16_t	 chan15_raw_m;
+		uint16_t	 chan16_raw_m;
+		uint16_t	 chan17_raw_m;
+		uint16_t	 chan18_raw_m;
+		uint8_t	 rssi_m;
+	mavlink_request_data_stream_t request_data_stream_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 req_stream_id_m;
+		uint16_t	 req_message_rate_m;
+		uint8_t	 start_stop_m;
+	mavlink_data_stream_t data_stream_m;
+		uint8_t	 stream_id_m;
+		uint16_t	 message_rate_m;
+		uint8_t	 on_off_m;
+	mavlink_manual_control_t manual_control_m;
+		uint8_t	 target_m;
+		int16_t	 x_m;
+		int16_t	 y_m;
+		int16_t	 z_m;
+		int16_t	 r_m;
+		uint16_t	 buttons_m;
+	mavlink_rc_channels_override_t rc_channels_override_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 chan1_raw_m;
+		uint16_t	 chan2_raw_m;
+		uint16_t	 chan3_raw_m;
+		uint16_t	 chan4_raw_m;
+		uint16_t	 chan5_raw_m;
+		uint16_t	 chan6_raw_m;
+		uint16_t	 chan7_raw_m;
+		uint16_t	 chan8_raw_m;
+		uint16_t	 chan9_raw_m;
+		uint16_t	 chan10_raw_m;
+		uint16_t	 chan11_raw_m;
+		uint16_t	 chan12_raw_m;
+		uint16_t	 chan13_raw_m;
+		uint16_t	 chan14_raw_m;
+		uint16_t	 chan15_raw_m;
+		uint16_t	 chan16_raw_m;
+		uint16_t	 chan17_raw_m;
+		uint16_t	 chan18_raw_m;
+	mavlink_mission_item_int_t mission_item_int_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 seq_m;
+		uint8_t	 frame_m;
+		uint16_t	 command_m;
+		uint8_t	 current_m;
+		uint8_t	 autocontinue_m;
+		float	 param1_m;
+		float	 param2_m;
+		float	 param3_m;
+		float	 param4_m;
+		int32_t	 x_m;
+		int32_t	 y_m;
+		float	 z_m;
+		uint8_t	 mission_type_m;
+	mavlink_vfr_hud_t vfr_hud_m;
+		float	 airspeed_m;
+		float	 groundspeed_m;
+		int16_t	 heading_m;
+		uint16_t	 throttle_m;
+		float	 alt_m;
+		float	 climb_m;
+	mavlink_command_int_t command_int_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 frame_m;
+		uint16_t	 command_m;
+		uint8_t	 current_m;
+		uint8_t	 autocontinue_m;
+		float	 param1_m;
+		float	 param2_m;
+		float	 param3_m;
+		float	 param4_m;
+		int32_t	 x_m;
+		int32_t	 y_m;
+		float	 z_m;
+	mavlink_command_long_t command_long_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 command_m;
+		uint8_t	 confirmation_m;
+		float	 param1_m;
+		float	 param2_m;
+		float	 param3_m;
+		float	 param4_m;
+		float	 param5_m;
+		float	 param6_m;
+		float	 param7_m;
+	mavlink_command_ack_t command_ack_m;
+		uint16_t	 command_m;
+		uint8_t	 result_m;
+		uint8_t	 progress_m;
+		int32_t	 result_param2_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+	mavlink_command_cancel_t command_cancel_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 command_m;
+	mavlink_manual_setpoint_t manual_setpoint_m;
+		uint32_t	 time_boot_ms_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 thrust_m;
+		uint8_t	 mode_switch_m;
+		uint8_t	 manual_override_switch_m;
+	mavlink_set_attitude_target_t set_attitude_target_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 type_mask_m;
+		float[4]	 q_m;
+		float	 body_roll_rate_m;
+		float	 body_pitch_rate_m;
+		float	 body_yaw_rate_m;
+		float	 thrust_m;
+		float[3]	 thrust_body_m;
+	mavlink_attitude_target_t attitude_target_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 type_mask_m;
+		float[4]	 q_m;
+		float	 body_roll_rate_m;
+		float	 body_pitch_rate_m;
+		float	 body_yaw_rate_m;
+		float	 thrust_m;
+	mavlink_set_position_target_local_ned_t set_position_target_local_ned_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 coordinate_frame_m;
+		uint16_t	 type_mask_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float	 afx_m;
+		float	 afy_m;
+		float	 afz_m;
+		float	 yaw_m;
+		float	 yaw_rate_m;
+	mavlink_position_target_local_ned_t position_target_local_ned_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 coordinate_frame_m;
+		uint16_t	 type_mask_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float	 afx_m;
+		float	 afy_m;
+		float	 afz_m;
+		float	 yaw_m;
+		float	 yaw_rate_m;
+	mavlink_set_position_target_global_int_t set_position_target_global_int_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 coordinate_frame_m;
+		uint16_t	 type_mask_m;
+		int32_t	 lat_int_m;
+		int32_t	 lon_int_m;
+		float	 alt_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float	 afx_m;
+		float	 afy_m;
+		float	 afz_m;
+		float	 yaw_m;
+		float	 yaw_rate_m;
+	mavlink_position_target_global_int_t position_target_global_int_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 coordinate_frame_m;
+		uint16_t	 type_mask_m;
+		int32_t	 lat_int_m;
+		int32_t	 lon_int_m;
+		float	 alt_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float	 afx_m;
+		float	 afy_m;
+		float	 afz_m;
+		float	 yaw_m;
+		float	 yaw_rate_m;
+	mavlink_local_position_ned_system_global_offset_t local_position_ned_system_global_offset_m;
+		uint32_t	 time_boot_ms_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+	mavlink_hil_state_t hil_state_m;
+		uint64_t	 time_usec_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 rollspeed_m;
+		float	 pitchspeed_m;
+		float	 yawspeed_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		int16_t	 vx_m;
+		int16_t	 vy_m;
+		int16_t	 vz_m;
+		int16_t	 xacc_m;
+		int16_t	 yacc_m;
+		int16_t	 zacc_m;
+	mavlink_hil_controls_t hil_controls_m;
+		uint64_t	 time_usec_m;
+		float	 roll_ailerons_m;
+		float	 pitch_elevator_m;
+		float	 yaw_rudder_m;
+		float	 throttle_m;
+		float	 aux1_m;
+		float	 aux2_m;
+		float	 aux3_m;
+		float	 aux4_m;
+		uint8_t	 mode_m;
+		uint8_t	 nav_mode_m;
+	mavlink_hil_rc_inputs_raw_t hil_rc_inputs_raw_m;
+		uint64_t	 time_usec_m;
+		uint16_t	 chan1_raw_m;
+		uint16_t	 chan2_raw_m;
+		uint16_t	 chan3_raw_m;
+		uint16_t	 chan4_raw_m;
+		uint16_t	 chan5_raw_m;
+		uint16_t	 chan6_raw_m;
+		uint16_t	 chan7_raw_m;
+		uint16_t	 chan8_raw_m;
+		uint16_t	 chan9_raw_m;
+		uint16_t	 chan10_raw_m;
+		uint16_t	 chan11_raw_m;
+		uint16_t	 chan12_raw_m;
+		uint8_t	 rssi_m;
+	mavlink_hil_actuator_controls_t hil_actuator_controls_m;
+		uint64_t	 time_usec_m;
+		float[16]	 controls_m;
+		uint8_t	 mode_m;
+		uint64_t	 flags_m;
+	mavlink_optical_flow_t optical_flow_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 sensor_id_m;
+		int16_t	 flow_x_m;
+		int16_t	 flow_y_m;
+		float	 flow_comp_m_x_m;
+		float	 flow_comp_m_y_m;
+		uint8_t	 quality_m;
+		float	 ground_distance_m;
+		float	 flow_rate_x_m;
+		float	 flow_rate_y_m;
+	mavlink_global_vision_position_estimate_t global_vision_position_estimate_m;
+		uint64_t	 usec_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float[21]	 covariance_m;
+		uint8_t	 reset_counter_m;
+	mavlink_vision_position_estimate_t vision_position_estimate_m;
+		uint64_t	 usec_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float[21]	 covariance_m;
+		uint8_t	 reset_counter_m;
+	mavlink_vision_speed_estimate_t vision_speed_estimate_m;
+		uint64_t	 usec_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float[9]	 covariance_m;
+		uint8_t	 reset_counter_m;
+	mavlink_vicon_position_estimate_t vicon_position_estimate_m;
+		uint64_t	 usec_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float[21]	 covariance_m;
+	mavlink_highres_imu_t highres_imu_m;
+		uint64_t	 time_usec_m;
+		float	 xacc_m;
+		float	 yacc_m;
+		float	 zacc_m;
+		float	 xgyro_m;
+		float	 ygyro_m;
+		float	 zgyro_m;
+		float	 xmag_m;
+		float	 ymag_m;
+		float	 zmag_m;
+		float	 abs_pressure_m;
+		float	 diff_pressure_m;
+		float	 pressure_alt_m;
+		float	 temperature_m;
+		uint16_t	 fields_updated_m;
+		uint8_t	 id_m;
+	mavlink_optical_flow_rad_t optical_flow_rad_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 sensor_id_m;
+		uint32_t	 integration_time_us_m;
+		float	 integrated_x_m;
+		float	 integrated_y_m;
+		float	 integrated_xgyro_m;
+		float	 integrated_ygyro_m;
+		float	 integrated_zgyro_m;
+		int16_t	 temperature_m;
+		uint8_t	 quality_m;
+		uint32_t	 time_delta_distance_us_m;
+		float	 distance_m;
+	mavlink_hil_sensor_t hil_sensor_m;
+		uint64_t	 time_usec_m;
+		float	 xacc_m;
+		float	 yacc_m;
+		float	 zacc_m;
+		float	 xgyro_m;
+		float	 ygyro_m;
+		float	 zgyro_m;
+		float	 xmag_m;
+		float	 ymag_m;
+		float	 zmag_m;
+		float	 abs_pressure_m;
+		float	 diff_pressure_m;
+		float	 pressure_alt_m;
+		float	 temperature_m;
+		uint32_t	 fields_updated_m;
+		uint8_t	 id_m;
+	mavlink_sim_state_t sim_state_m;
+		float	 q1_m;
+		float	 q2_m;
+		float	 q3_m;
+		float	 q4_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 xacc_m;
+		float	 yacc_m;
+		float	 zacc_m;
+		float	 xgyro_m;
+		float	 ygyro_m;
+		float	 zgyro_m;
+		float	 lat_m;
+		float	 lon_m;
+		float	 alt_m;
+		float	 std_dev_horz_m;
+		float	 std_dev_vert_m;
+		float	 vn_m;
+		float	 ve_m;
+		float	 vd_m;
+	mavlink_radio_status_t radio_status_m;
+		uint8_t	 rssi_m;
+		uint8_t	 remrssi_m;
+		uint8_t	 txbuf_m;
+		uint8_t	 noise_m;
+		uint8_t	 remnoise_m;
+		uint16_t	 rxerrors_m;
+		uint16_t	 fixed_m;
+	mavlink_file_transfer_protocol_t file_transfer_protocol_m;
+		uint8_t	 target_network_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[251]	 payload_m;
+	mavlink_timesync_t timesync_m;
+		int64_t	 tc1_m;
+		int64_t	 ts1_m;
+	mavlink_camera_trigger_t camera_trigger_m;
+		uint64_t	 time_usec_m;
+		uint32_t	 seq_m;
+	mavlink_hil_gps_t hil_gps_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 fix_type_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		uint16_t	 eph_m;
+		uint16_t	 epv_m;
+		uint16_t	 vel_m;
+		int16_t	 vn_m;
+		int16_t	 ve_m;
+		int16_t	 vd_m;
+		uint16_t	 cog_m;
+		uint8_t	 satellites_visible_m;
+		uint8_t	 id_m;
+		uint16_t	 yaw_m;
+	mavlink_hil_optical_flow_t hil_optical_flow_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 sensor_id_m;
+		uint32_t	 integration_time_us_m;
+		float	 integrated_x_m;
+		float	 integrated_y_m;
+		float	 integrated_xgyro_m;
+		float	 integrated_ygyro_m;
+		float	 integrated_zgyro_m;
+		int16_t	 temperature_m;
+		uint8_t	 quality_m;
+		uint32_t	 time_delta_distance_us_m;
+		float	 distance_m;
+	mavlink_hil_state_quaternion_t hil_state_quaternion_m;
+		uint64_t	 time_usec_m;
+		float[4]	 attitude_quaternion_m;
+		float	 rollspeed_m;
+		float	 pitchspeed_m;
+		float	 yawspeed_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		int16_t	 vx_m;
+		int16_t	 vy_m;
+		int16_t	 vz_m;
+		uint16_t	 ind_airspeed_m;
+		uint16_t	 true_airspeed_m;
+		int16_t	 xacc_m;
+		int16_t	 yacc_m;
+		int16_t	 zacc_m;
+	mavlink_scaled_imu2_t scaled_imu2_m;
+		uint32_t	 time_boot_ms_m;
+		int16_t	 xacc_m;
+		int16_t	 yacc_m;
+		int16_t	 zacc_m;
+		int16_t	 xgyro_m;
+		int16_t	 ygyro_m;
+		int16_t	 zgyro_m;
+		int16_t	 xmag_m;
+		int16_t	 ymag_m;
+		int16_t	 zmag_m;
+		int16_t	 temperature_m;
+	mavlink_log_request_list_t log_request_list_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 start_m;
+		uint16_t	 end_m;
+	mavlink_log_entry_t log_entry_m;
+		uint16_t	 id_m;
+		uint16_t	 num_logs_m;
+		uint16_t	 last_log_num_m;
+		uint32_t	 time_utc_m;
+		uint32_t	 size_m;
+	mavlink_log_request_data_t log_request_data_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 id_m;
+		uint32_t	 ofs_m;
+		uint32_t	 count_m;
+	mavlink_log_data_t log_data_m;
+		uint16_t	 id_m;
+		uint32_t	 ofs_m;
+		uint8_t	 count_m;
+		uint8_t[90]	 data_m;
+	mavlink_log_erase_t log_erase_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+	mavlink_log_request_end_t log_request_end_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+	mavlink_gps_inject_data_t gps_inject_data_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 len_m;
+		uint8_t[110]	 data_m;
+	mavlink_gps2_raw_t gps2_raw_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 fix_type_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		uint16_t	 eph_m;
+		uint16_t	 epv_m;
+		uint16_t	 vel_m;
+		uint16_t	 cog_m;
+		uint8_t	 satellites_visible_m;
+		uint8_t	 dgps_numch_m;
+		uint32_t	 dgps_age_m;
+		uint16_t	 yaw_m;
+	mavlink_power_status_t power_status_m;
+		uint16_t	 Vcc_m;
+		uint16_t	 Vservo_m;
+		uint16_t	 flags_m;
+	mavlink_serial_control_t serial_control_m;
+		uint8_t	 device_m;
+		uint8_t	 flags_m;
+		uint16_t	 timeout_m;
+		uint32_t	 baudrate_m;
+		uint8_t	 count_m;
+		uint8_t[70]	 data_m;
+	mavlink_gps_rtk_t gps_rtk_m;
+		uint32_t	 time_last_baseline_ms_m;
+		uint8_t	 rtk_receiver_id_m;
+		uint16_t	 wn_m;
+		uint32_t	 tow_m;
+		uint8_t	 rtk_health_m;
+		uint8_t	 rtk_rate_m;
+		uint8_t	 nsats_m;
+		uint8_t	 baseline_coords_type_m;
+		int32_t	 baseline_a_mm_m;
+		int32_t	 baseline_b_mm_m;
+		int32_t	 baseline_c_mm_m;
+		uint32_t	 accuracy_m;
+		int32_t	 iar_num_hypotheses_m;
+	mavlink_gps2_rtk_t gps2_rtk_m;
+		uint32_t	 time_last_baseline_ms_m;
+		uint8_t	 rtk_receiver_id_m;
+		uint16_t	 wn_m;
+		uint32_t	 tow_m;
+		uint8_t	 rtk_health_m;
+		uint8_t	 rtk_rate_m;
+		uint8_t	 nsats_m;
+		uint8_t	 baseline_coords_type_m;
+		int32_t	 baseline_a_mm_m;
+		int32_t	 baseline_b_mm_m;
+		int32_t	 baseline_c_mm_m;
+		uint32_t	 accuracy_m;
+		int32_t	 iar_num_hypotheses_m;
+	mavlink_scaled_imu3_t scaled_imu3_m;
+		uint32_t	 time_boot_ms_m;
+		int16_t	 xacc_m;
+		int16_t	 yacc_m;
+		int16_t	 zacc_m;
+		int16_t	 xgyro_m;
+		int16_t	 ygyro_m;
+		int16_t	 zgyro_m;
+		int16_t	 xmag_m;
+		int16_t	 ymag_m;
+		int16_t	 zmag_m;
+		int16_t	 temperature_m;
+	mavlink_data_transmission_handshake_t data_transmission_handshake_m;
+		uint8_t	 type_m;
+		uint32_t	 size_m;
+		uint16_t	 width_m;
+		uint16_t	 height_m;
+		uint16_t	 packets_m;
+		uint8_t	 payload_m;
+		uint8_t	 jpg_quality_m;
+	mavlink_encapsulated_data_t encapsulated_data_m;
+		uint16_t	 seqnr_m;
+		uint8_t[253]	 data_m;
+	mavlink_distance_sensor_t distance_sensor_m;
+		uint32_t	 time_boot_ms_m;
+		uint16_t	 min_distance_m;
+		uint16_t	 max_distance_m;
+		uint16_t	 current_distance_m;
+		uint8_t	 type_m;
+		uint8_t	 id_m;
+		uint8_t	 orientation_m;
+		uint8_t	 covariance_m;
+		float	 horizontal_fov_m;
+		float	 vertical_fov_m;
+		float[4]	 quaternion_m;
+		uint8_t	 signal_quality_m;
+	mavlink_terrain_request_t terrain_request_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		uint16_t	 grid_spacing_m;
+		uint64_t	 mask_m;
+	mavlink_terrain_data_t terrain_data_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		uint16_t	 grid_spacing_m;
+		uint8_t	 gridbit_m;
+		int16_t[16]	 data_m;
+	mavlink_terrain_check_t terrain_check_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+	mavlink_terrain_report_t terrain_report_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		uint16_t	 spacing_m;
+		float	 terrain_height_m;
+		float	 current_height_m;
+		uint16_t	 pending_m;
+		uint16_t	 loaded_m;
+	mavlink_scaled_pressure2_t scaled_pressure2_m;
+		uint32_t	 time_boot_ms_m;
+		float	 press_abs_m;
+		float	 press_diff_m;
+		int16_t	 temperature_m;
+		int16_t	 temperature_press_diff_m;
+	mavlink_att_pos_mocap_t att_pos_mocap_m;
+		uint64_t	 time_usec_m;
+		float[4]	 q_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float[21]	 covariance_m;
+	mavlink_set_actuator_control_target_t set_actuator_control_target_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 group_mlx_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		float[8]	 controls_m;
+	mavlink_actuator_control_target_t actuator_control_target_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 group_mlx_m;
+		float[8]	 controls_m;
+	mavlink_altitude_t altitude_m;
+		uint64_t	 time_usec_m;
+		float	 altitude_monotonic_m;
+		float	 altitude_amsl_m;
+		float	 altitude_local_m;
+		float	 altitude_relative_m;
+		float	 altitude_terrain_m;
+		float	 bottom_clearance_m;
+	mavlink_resource_request_t resource_request_m;
+		uint8_t	 request_id_m;
+		uint8_t	 uri_type_m;
+		uint8_t[120]	 uri_m;
+		uint8_t	 transfer_type_m;
+		uint8_t[120]	 storage_m;
+	mavlink_scaled_pressure3_t scaled_pressure3_m;
+		uint32_t	 time_boot_ms_m;
+		float	 press_abs_m;
+		float	 press_diff_m;
+		int16_t	 temperature_m;
+		int16_t	 temperature_press_diff_m;
+	mavlink_follow_target_t follow_target_m;
+		uint64_t	 timestamp_m;
+		uint8_t	 est_capabilities_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		float	 alt_m;
+		float[3]	 vel_m;
+		float[3]	 acc_m;
+		float[4]	 attitude_q_m;
+		float[3]	 rates_m;
+		float[3]	 position_cov_m;
+		uint64_t	 custom_state_m;
+	mavlink_control_system_state_t control_system_state_m;
+		uint64_t	 time_usec_m;
+		float	 x_acc_m;
+		float	 y_acc_m;
+		float	 z_acc_m;
+		float	 x_vel_m;
+		float	 y_vel_m;
+		float	 z_vel_m;
+		float	 x_pos_m;
+		float	 y_pos_m;
+		float	 z_pos_m;
+		float	 airspeed_m;
+		float[3]	 vel_variance_m;
+		float[3]	 pos_variance_m;
+		float[4]	 q_m;
+		float	 roll_rate_m;
+		float	 pitch_rate_m;
+		float	 yaw_rate_m;
+	mavlink_battery_status_t battery_status_m;
+		uint8_t	 id_m;
+		uint8_t	 battery_function_m;
+		uint8_t	 type_m;
+		int16_t	 temperature_m;
+		uint16_t[10]	 voltages_m;
+		int16_t	 current_battery_m;
+		int32_t	 current_consumed_m;
+		int32_t	 energy_consumed_m;
+		int8_t	 battery_remaining_m;
+		int32_t	 time_remaining_m;
+		uint8_t	 charge_state_m;
+		uint16_t[4]	 voltages_ext_m;
+		uint8_t	 mode_m;
+		uint32_t	 fault_bitmask_m;
+	mavlink_autopilot_version_t autopilot_version_m;
+		uint64_t	 capabilities_m;
+		uint32_t	 flight_sw_version_m;
+		uint32_t	 middleware_sw_version_m;
+		uint32_t	 os_sw_version_m;
+		uint32_t	 board_version_m;
+		uint8_t[8]	 flight_custom_version_m;
+		uint8_t[8]	 middleware_custom_version_m;
+		uint8_t[8]	 os_custom_version_m;
+		uint16_t	 vendor_id_m;
+		uint16_t	 product_id_m;
+		uint64_t	 uid_m;
+		uint8_t[18]	 uid2_m;
+	mavlink_landing_target_t landing_target_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 target_num_m;
+		uint8_t	 frame_m;
+		float	 angle_x_m;
+		float	 angle_y_m;
+		float	 distance_m;
+		float	 size_x_m;
+		float	 size_y_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float[4]	 q_m;
+		uint8_t	 type_m;
+		uint8_t	 position_valid_m;
+	mavlink_fence_status_t fence_status_m;
+		uint8_t	 breach_status_m;
+		uint16_t	 breach_count_m;
+		uint8_t	 breach_type_m;
+		uint32_t	 breach_time_m;
+		uint8_t	 breach_mitigation_m;
+	mavlink_mag_cal_report_t mag_cal_report_m;
+		uint8_t	 compass_id_m;
+		uint8_t	 cal_mask_m;
+		uint8_t	 cal_status_m;
+		uint8_t	 autosaved_m;
+		float	 fitness_m;
+		float	 ofs_x_m;
+		float	 ofs_y_m;
+		float	 ofs_z_m;
+		float	 diag_x_m;
+		float	 diag_y_m;
+		float	 diag_z_m;
+		float	 offdiag_x_m;
+		float	 offdiag_y_m;
+		float	 offdiag_z_m;
+		float	 orientation_confidence_m;
+		uint8_t	 old_orientation_m;
+		uint8_t	 new_orientation_m;
+		float	 scale_factor_m;
+	mavlink_efi_status_t efi_status_m;
+		uint8_t	 health_m;
+		float	 ecu_index_m;
+		float	 rpm_m;
+		float	 fuel_consumed_m;
+		float	 fuel_flow_m;
+		float	 engine_load_m;
+		float	 throttle_position_m;
+		float	 spark_dwell_time_m;
+		float	 barometric_pressure_m;
+		float	 intake_manifold_pressure_m;
+		float	 intake_manifold_temperature_m;
+		float	 cylinder_head_temperature_m;
+		float	 ignition_timing_m;
+		float	 injection_time_m;
+		float	 exhaust_gas_temperature_m;
+		float	 throttle_out_m;
+		float	 pt_compensation_m;
+	mavlink_estimator_status_t estimator_status_m;
+		uint64_t	 time_usec_m;
+		uint16_t	 flags_m;
+		float	 vel_ratio_m;
+		float	 pos_horiz_ratio_m;
+		float	 pos_vert_ratio_m;
+		float	 mag_ratio_m;
+		float	 hagl_ratio_m;
+		float	 tas_ratio_m;
+		float	 pos_horiz_accuracy_m;
+		float	 pos_vert_accuracy_m;
+	mavlink_wind_cov_t wind_cov_m;
+		uint64_t	 time_usec_m;
+		float	 wind_x_m;
+		float	 wind_y_m;
+		float	 wind_z_m;
+		float	 var_horiz_m;
+		float	 var_vert_m;
+		float	 wind_alt_m;
+		float	 horiz_accuracy_m;
+		float	 vert_accuracy_m;
+	mavlink_gps_input_t gps_input_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 gps_id_m;
+		uint16_t	 ignore_flags_m;
+		uint32_t	 time_week_ms_m;
+		uint16_t	 time_week_m;
+		uint8_t	 fix_type_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		float	 alt_m;
+		float	 hdop_m;
+		float	 vdop_m;
+		float	 vn_m;
+		float	 ve_m;
+		float	 vd_m;
+		float	 speed_accuracy_m;
+		float	 horiz_accuracy_m;
+		float	 vert_accuracy_m;
+		uint8_t	 satellites_visible_m;
+		uint16_t	 yaw_m;
+	mavlink_gps_rtcm_data_t gps_rtcm_data_m;
+		uint8_t	 flags_m;
+		uint8_t	 len_m;
+		uint8_t[180]	 data_m;
+	mavlink_high_latency_t high_latency_m;
+		uint8_t	 base_mode_m;
+		uint32_t	 custom_mode_m;
+		uint8_t	 landed_state_m;
+		int16_t	 roll_m;
+		int16_t	 pitch_m;
+		uint16_t	 heading_m;
+		int8_t	 throttle_m;
+		int16_t	 heading_sp_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		int16_t	 altitude_amsl_m;
+		int16_t	 altitude_sp_m;
+		uint8_t	 airspeed_m;
+		uint8_t	 airspeed_sp_m;
+		uint8_t	 groundspeed_m;
+		int8_t	 climb_rate_m;
+		uint8_t	 gps_nsat_m;
+		uint8_t	 gps_fix_type_m;
+		uint8_t	 battery_remaining_m;
+		int8_t	 temperature_m;
+		int8_t	 temperature_air_m;
+		uint8_t	 failsafe_m;
+		uint8_t	 wp_num_m;
+		uint16_t	 wp_distance_m;
+	mavlink_high_latency2_t high_latency2_m;
+		uint32_t	 timestamp_m;
+		uint8_t	 type_m;
+		uint8_t	 autopilot_m;
+		uint16_t	 custom_mode_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		int16_t	 altitude_m;
+		int16_t	 target_altitude_m;
+		uint8_t	 heading_m;
+		uint8_t	 target_heading_m;
+		uint16_t	 target_distance_m;
+		uint8_t	 throttle_m;
+		uint8_t	 airspeed_m;
+		uint8_t	 airspeed_sp_m;
+		uint8_t	 groundspeed_m;
+		uint8_t	 windspeed_m;
+		uint8_t	 wind_heading_m;
+		uint8_t	 eph_m;
+		uint8_t	 epv_m;
+		int8_t	 temperature_air_m;
+		int8_t	 climb_rate_m;
+		int8_t	 battery_m;
+		uint16_t	 wp_num_m;
+		uint16_t	 failure_flags_m;
+		int8_t	 custom0_m;
+		int8_t	 custom1_m;
+		int8_t	 custom2_m;
+	mavlink_vibration_t vibration_m;
+		uint64_t	 time_usec_m;
+		float	 vibration_x_m;
+		float	 vibration_y_m;
+		float	 vibration_z_m;
+		uint32_t	 clipping_0_m;
+		uint32_t	 clipping_1_m;
+		uint32_t	 clipping_2_m;
+	mavlink_home_position_t home_position_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		int32_t	 altitude_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float[4]	 q_m;
+		float	 approach_x_m;
+		float	 approach_y_m;
+		float	 approach_z_m;
+		uint64_t	 time_usec_m;
+	mavlink_set_home_position_t set_home_position_m;
+		uint8_t	 target_system_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		int32_t	 altitude_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float[4]	 q_m;
+		float	 approach_x_m;
+		float	 approach_y_m;
+		float	 approach_z_m;
+		uint64_t	 time_usec_m;
+	mavlink_message_interval_t message_interval_m;
+		uint16_t	 message_id_m;
+		int32_t	 interval_us_m;
+	mavlink_extended_sys_state_t extended_sys_state_m;
+		uint8_t	 vtol_state_m;
+		uint8_t	 landed_state_m;
+	mavlink_adsb_vehicle_t adsb_vehicle_m;
+		uint32_t	 ICAO_address_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		uint8_t	 altitude_type_m;
+		int32_t	 altitude_m;
+		uint16_t	 heading_m;
+		uint16_t	 hor_velocity_m;
+		int16_t	 ver_velocity_m;
+		char[9]	 callsign_m;
+		uint8_t	 emitter_type_m;
+		uint8_t	 tslc_m;
+		uint16_t	 flags_m;
+		uint16_t	 squawk_m;
+	mavlink_collision_t collision_m;
+		uint8_t	 src_m;
+		uint32_t	 id_m;
+		uint8_t	 action_m;
+		uint8_t	 threat_level_m;
+		float	 time_to_minimum_delta_m;
+		float	 altitude_minimum_delta_m;
+		float	 horizontal_minimum_delta_m;
+	mavlink_v2_extension_t v2_extension_m;
+		uint8_t	 target_network_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 message_type_m;
+		uint8_t[249]	 payload_m;
+	mavlink_memory_vect_t memory_vect_m;
+		uint16_t	 address_m;
+		uint8_t	 ver_m;
+		uint8_t	 type_m;
+		int8_t[32]	 value_m;
+	mavlink_debug_vect_t debug_vect_m;
+		char[10]	 name_m;
+		uint64_t	 time_usec_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+	mavlink_named_value_float_t named_value_float_m;
+		uint32_t	 time_boot_ms_m;
+		char[10]	 name_m;
+		float	 value_m;
+	mavlink_named_value_int_t named_value_int_m;
+		uint32_t	 time_boot_ms_m;
+		char[10]	 name_m;
+		int32_t	 value_m;
+	mavlink_statustext_t statustext_m;
+		uint8_t	 severity_m;
+		char[50]	 text_m;
+		uint16_t	 id_m;
+		uint8_t	 chunk_seq_m;
+	mavlink_debug_t debug_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 ind_m;
+		float	 value_m;
+	mavlink_setup_signing_t setup_signing_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[32]	 secret_key_m;
+		uint64_t	 initial_timestamp_m;
+	mavlink_button_change_t button_change_m;
+		uint32_t	 time_boot_ms_m;
+		uint32_t	 last_change_ms_m;
+		uint8_t	 state_m;
+	mavlink_play_tune_t play_tune_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[30]	 tune_m;
+		char[200]	 tune2_m;
+	mavlink_camera_information_t camera_information_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t[32]	 vendor_name_m;
+		uint8_t[32]	 model_name_m;
+		uint32_t	 firmware_version_m;
+		float	 focal_length_m;
+		float	 sensor_size_h_m;
+		float	 sensor_size_v_m;
+		uint16_t	 resolution_h_m;
+		uint16_t	 resolution_v_m;
+		uint8_t	 lens_id_m;
+		uint32_t	 flags_m;
+		uint16_t	 cam_definition_version_m;
+		char[140]	 cam_definition_uri_m;
+	mavlink_camera_settings_t camera_settings_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 mode_id_m;
+		float	 zoomLevel_m;
+		float	 focusLevel_m;
+	mavlink_storage_information_t storage_information_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 storage_id_m;
+		uint8_t	 storage_count_m;
+		uint8_t	 status_m;
+		float	 total_capacity_m;
+		float	 used_capacity_m;
+		float	 available_capacity_m;
+		float	 read_speed_m;
+		float	 write_speed_m;
+		uint8_t	 type_m;
+		char[32]	 name_m;
+	mavlink_camera_capture_status_t camera_capture_status_m;
+		uint32_t	 time_boot_ms_m;
+		uint8_t	 image_status_m;
+		uint8_t	 video_status_m;
+		float	 image_interval_m;
+		uint32_t	 recording_time_ms_m;
+		float	 available_capacity_m;
+		int32_t	 image_count_m;
+	mavlink_camera_image_captured_t camera_image_captured_m;
+		uint32_t	 time_boot_ms_m;
+		uint64_t	 time_utc_m;
+		uint8_t	 camera_id_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		int32_t	 relative_alt_m;
+		float[4]	 q_m;
+		int32_t	 image_index_m;
+		int8_t	 capture_result_m;
+		char[205]	 file_url_m;
+	mavlink_flight_information_t flight_information_m;
+		uint32_t	 time_boot_ms_m;
+		uint64_t	 arming_time_utc_m;
+		uint64_t	 takeoff_time_utc_m;
+		uint64_t	 flight_uuid_m;
+	mavlink_mount_orientation_t mount_orientation_m;
+		uint32_t	 time_boot_ms_m;
+		float	 roll_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 yaw_absolute_m;
+	mavlink_logging_data_t logging_data_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 sequence_m;
+		uint8_t	 length_m;
+		uint8_t	 first_message_offset_m;
+		uint8_t[249]	 data_m;
+	mavlink_logging_data_acked_t logging_data_acked_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 sequence_m;
+		uint8_t	 length_m;
+		uint8_t	 first_message_offset_m;
+		uint8_t[249]	 data_m;
+	mavlink_logging_ack_t logging_ack_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 sequence_m;
+	mavlink_video_stream_information_t video_stream_information_m;
+		uint8_t	 stream_id_m;
+		uint8_t	 count_m;
+		uint8_t	 type_m;
+		uint16_t	 flags_m;
+		float	 framerate_m;
+		uint16_t	 resolution_h_m;
+		uint16_t	 resolution_v_m;
+		uint32_t	 bitrate_m;
+		uint16_t	 rotation_m;
+		uint16_t	 hfov_m;
+		char[32]	 name_m;
+		char[160]	 uri_m;
+	mavlink_video_stream_status_t video_stream_status_m;
+		uint8_t	 stream_id_m;
+		uint16_t	 flags_m;
+		float	 framerate_m;
+		uint16_t	 resolution_h_m;
+		uint16_t	 resolution_v_m;
+		uint32_t	 bitrate_m;
+		uint16_t	 rotation_m;
+		uint16_t	 hfov_m;
+	mavlink_camera_fov_status_t camera_fov_status_m;
+		uint32_t	 time_boot_ms_m;
+		int32_t	 lat_camera_m;
+		int32_t	 lon_camera_m;
+		int32_t	 alt_camera_m;
+		int32_t	 lat_image_m;
+		int32_t	 lon_image_m;
+		int32_t	 alt_image_m;
+		float[4]	 q_m;
+		float	 hfov_m;
+		float	 vfov_m;
+	mavlink_camera_tracking_image_status_t camera_tracking_image_status_m;
+		uint8_t	 tracking_status_m;
+		uint8_t	 tracking_mode_m;
+		uint8_t	 target_data_m;
+		float	 point_x_m;
+		float	 point_y_m;
+		float	 radius_m;
+		float	 rec_top_x_m;
+		float	 rec_top_y_m;
+		float	 rec_bottom_x_m;
+		float	 rec_bottom_y_m;
+	mavlink_camera_tracking_geo_status_t camera_tracking_geo_status_m;
+		uint8_t	 tracking_status_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		float	 alt_m;
+		float	 h_acc_m;
+		float	 v_acc_m;
+		float	 vel_n_m;
+		float	 vel_e_m;
+		float	 vel_d_m;
+		float	 vel_acc_m;
+		float	 dist_m;
+		float	 hdg_m;
+		float	 hdg_acc_m;
+	mavlink_gimbal_manager_information_t gimbal_manager_information_m;
+		uint32_t	 time_boot_ms_m;
+		uint32_t	 cap_flags_m;
+		uint8_t	 gimbal_device_id_m;
+		float	 roll_min_m;
+		float	 roll_max_m;
+		float	 pitch_min_m;
+		float	 pitch_max_m;
+		float	 yaw_min_m;
+		float	 yaw_max_m;
+	mavlink_gimbal_manager_status_t gimbal_manager_status_m;
+		uint32_t	 time_boot_ms_m;
+		uint32_t	 flags_m;
+		uint8_t	 gimbal_device_id_m;
+		uint8_t	 primary_control_sysid_m;
+		uint8_t	 primary_control_compid_m;
+		uint8_t	 secondary_control_sysid_m;
+		uint8_t	 secondary_control_compid_m;
+	mavlink_gimbal_manager_set_attitude_t gimbal_manager_set_attitude_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint32_t	 flags_m;
+		uint8_t	 gimbal_device_id_m;
+		float[4]	 q_m;
+		float	 angular_velocity_x_m;
+		float	 angular_velocity_y_m;
+		float	 angular_velocity_z_m;
+	mavlink_gimbal_device_information_t gimbal_device_information_m;
+		uint32_t	 time_boot_ms_m;
+		char[32]	 vendor_name_m;
+		char[32]	 model_name_m;
+		char[32]	 custom_name_m;
+		uint32_t	 firmware_version_m;
+		uint32_t	 hardware_version_m;
+		uint64_t	 uid_m;
+		uint16_t	 cap_flags_m;
+		uint16_t	 custom_cap_flags_m;
+		float	 roll_min_m;
+		float	 roll_max_m;
+		float	 pitch_min_m;
+		float	 pitch_max_m;
+		float	 yaw_min_m;
+		float	 yaw_max_m;
+	mavlink_gimbal_device_set_attitude_t gimbal_device_set_attitude_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 flags_m;
+		float[4]	 q_m;
+		float	 angular_velocity_x_m;
+		float	 angular_velocity_y_m;
+		float	 angular_velocity_z_m;
+	mavlink_gimbal_device_attitude_status_t gimbal_device_attitude_status_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint32_t	 time_boot_ms_m;
+		uint16_t	 flags_m;
+		float[4]	 q_m;
+		float	 angular_velocity_x_m;
+		float	 angular_velocity_y_m;
+		float	 angular_velocity_z_m;
+		uint32_t	 failure_flags_m;
+	mavlink_autopilot_state_for_gimbal_device_t autopilot_state_for_gimbal_device_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint64_t	 time_boot_us_m;
+		float[4]	 q_m;
+		uint32_t	 q_estimated_delay_us_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		uint32_t	 v_estimated_delay_us_m;
+		float	 feed_forward_angular_velocity_z_m;
+		uint16_t	 estimator_status_m;
+		uint8_t	 landed_state_m;
+	mavlink_gimbal_manager_set_pitchyaw_t gimbal_manager_set_pitchyaw_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint32_t	 flags_m;
+		uint8_t	 gimbal_device_id_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 pitch_rate_m;
+		float	 yaw_rate_m;
+	mavlink_gimbal_manager_set_manual_control_t gimbal_manager_set_manual_control_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint32_t	 flags_m;
+		uint8_t	 gimbal_device_id_m;
+		float	 pitch_m;
+		float	 yaw_m;
+		float	 pitch_rate_m;
+		float	 yaw_rate_m;
+	mavlink_esc_info_t esc_info_m;
+		uint8_t	 index_m;
+		uint64_t	 time_usec_m;
+		uint16_t	 counter_m;
+		uint8_t	 count_m;
+		uint8_t	 connection_type_m;
+		uint8_t	 info_m;
+		uint16_t[4]	 failure_flags_m;
+		uint32_t[4]	 error_count_m;
+		uint8_t[4]	 temperature_m;
+	mavlink_esc_status_t esc_status_m;
+		uint8_t	 index_m;
+		uint64_t	 time_usec_m;
+		int32_t[4]	 rpm_m;
+		float[4]	 voltage_m;
+		float[4]	 current_m;
+	mavlink_wifi_config_ap_t wifi_config_ap_m;
+		char[32]	 ssid_m;
+		char[64]	 password_m;
+		int8_t	 mode_m;
+		int8_t	 response_m;
+	mavlink_ais_vessel_t ais_vessel_m;
+		uint32_t	 MMSI_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		uint16_t	 COG_m;
+		uint16_t	 heading_m;
+		uint16_t	 velocity_m;
+		int8_t	 turn_rate_m;
+		uint8_t	 navigational_status_m;
+		uint8_t	 type_m;
+		uint16_t	 dimension_bow_m;
+		uint16_t	 dimension_stern_m;
+		uint8_t	 dimension_port_m;
+		uint8_t	 dimension_starboard_m;
+		char[7]	 callsign_m;
+		char[20]	 name_m;
+		uint16_t	 tslc_m;
+		uint16_t	 flags_m;
+	mavlink_uavcan_node_status_t uavcan_node_status_m;
+		uint64_t	 time_usec_m;
+		uint32_t	 uptime_sec_m;
+		uint8_t	 health_m;
+		uint8_t	 mode_m;
+		uint8_t	 sub_mode_m;
+		uint16_t	 vendor_specific_status_code_m;
+	mavlink_uavcan_node_info_t uavcan_node_info_m;
+		uint64_t	 time_usec_m;
+		uint32_t	 uptime_sec_m;
+		char[80]	 name_m;
+		uint8_t	 hw_version_major_m;
+		uint8_t	 hw_version_minor_m;
+		uint8_t[16]	 hw_unique_id_m;
+		uint8_t	 sw_version_major_m;
+		uint8_t	 sw_version_minor_m;
+		uint32_t	 sw_vcs_commit_m;
+	mavlink_param_ext_request_read_t param_ext_request_read_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[16]	 param_id_m;
+		int16_t	 param_index_m;
+	mavlink_param_ext_request_list_t param_ext_request_list_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+	mavlink_param_ext_value_t param_ext_value_m;
+		char[16]	 param_id_m;
+		char[128]	 param_value_m;
+		uint8_t	 param_type_m;
+		uint16_t	 param_count_m;
+		uint16_t	 param_index_m;
+	mavlink_param_ext_set_t param_ext_set_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		char[16]	 param_id_m;
+		char[128]	 param_value_m;
+		uint8_t	 param_type_m;
+	mavlink_param_ext_ack_t param_ext_ack_m;
+		char[16]	 param_id_m;
+		char[128]	 param_value_m;
+		uint8_t	 param_type_m;
+		uint8_t	 param_result_m;
+	mavlink_obstacle_distance_t obstacle_distance_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 sensor_type_m;
+		uint16_t[72]	 distances_m;
+		uint8_t	 increment_m;
+		uint16_t	 min_distance_m;
+		uint16_t	 max_distance_m;
+		float	 increment_f_m;
+		float	 angle_offset_m;
+		uint8_t	 frame_m;
+	mavlink_odometry_t odometry_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 frame_id_m;
+		uint8_t	 child_frame_id_m;
+		float	 x_m;
+		float	 y_m;
+		float	 z_m;
+		float[4]	 q_m;
+		float	 vx_m;
+		float	 vy_m;
+		float	 vz_m;
+		float	 rollspeed_m;
+		float	 pitchspeed_m;
+		float	 yawspeed_m;
+		float[21]	 pose_covariance_m;
+		float[21]	 velocity_covariance_m;
+		uint8_t	 reset_counter_m;
+		uint8_t	 estimator_type_m;
+	mavlink_trajectory_representation_waypoints_t trajectory_representation_waypoints_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 valid_points_m;
+		float[5]	 pos_x_m;
+		float[5]	 pos_y_m;
+		float[5]	 pos_z_m;
+		float[5]	 vel_x_m;
+		float[5]	 vel_y_m;
+		float[5]	 vel_z_m;
+		float[5]	 acc_x_m;
+		float[5]	 acc_y_m;
+		float[5]	 acc_z_m;
+		float[5]	 pos_yaw_m;
+		float[5]	 vel_yaw_m;
+		uint16_t[5]	 command_m;
+	mavlink_trajectory_representation_bezier_t trajectory_representation_bezier_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 valid_points_m;
+		float[5]	 pos_x_m;
+		float[5]	 pos_y_m;
+		float[5]	 pos_z_m;
+		float[5]	 delta_m;
+		float[5]	 pos_yaw_m;
+	mavlink_cellular_status_t cellular_status_m;
+		uint8_t	 status_m;
+		uint8_t	 failure_reason_m;
+		uint8_t	 type_m;
+		uint8_t	 quality_m;
+		uint16_t	 mcc_m;
+		uint16_t	 mnc_m;
+		uint16_t	 lac_m;
+	mavlink_isbd_link_status_t isbd_link_status_m;
+		uint64_t	 timestamp_m;
+		uint64_t	 last_heartbeat_m;
+		uint16_t	 failed_sessions_m;
+		uint16_t	 successful_sessions_m;
+		uint8_t	 signal_quality_m;
+		uint8_t	 ring_pending_m;
+		uint8_t	 tx_session_pending_m;
+		uint8_t	 rx_session_pending_m;
+	mavlink_cellular_config_t cellular_config_m;
+		uint8_t	 enable_lte_m;
+		uint8_t	 enable_pin_m;
+		char[16]	 pin_m;
+		char[16]	 new_pin_m;
+		char[32]	 apn_m;
+		char[16]	 puk_m;
+		uint8_t	 roaming_m;
+		uint8_t	 response_m;
+	mavlink_raw_rpm_t raw_rpm_m;
+		uint8_t	 index_m;
+		float	 frequency_m;
+	mavlink_utm_global_position_t utm_global_position_m;
+		uint64_t	 time_m;
+		uint8_t[18]	 uas_id_m;
+		int32_t	 lat_m;
+		int32_t	 lon_m;
+		int32_t	 alt_m;
+		int32_t	 relative_alt_m;
+		int16_t	 vx_m;
+		int16_t	 vy_m;
+		int16_t	 vz_m;
+		uint16_t	 h_acc_m;
+		uint16_t	 v_acc_m;
+		uint16_t	 vel_acc_m;
+		int32_t	 next_lat_m;
+		int32_t	 next_lon_m;
+		int32_t	 next_alt_m;
+		uint16_t	 update_rate_m;
+		uint8_t	 flight_state_m;
+		uint8_t	 flags_m;
+	mavlink_debug_float_array_t debug_float_array_m;
+		uint64_t	 time_usec_m;
+		char[10]	 name_m;
+		uint16_t	 array_id_m;
+		float[58]	 data_m;
+	mavlink_orbit_execution_status_t orbit_execution_status_m;
+		uint64_t	 time_usec_m;
+		float	 radius_m;
+		uint8_t	 frame_m;
+		int32_t	 x_m;
+		int32_t	 y_m;
+		float	 z_m;
+	mavlink_smart_battery_info_t smart_battery_info_m;
+		uint8_t	 id_m;
+		uint8_t	 battery_function_m;
+		uint8_t	 type_m;
+		int32_t	 capacity_full_specification_m;
+		int32_t	 capacity_full_m;
+		uint16_t	 cycle_count_m;
+		char[16]	 serial_number_m;
+		char[50]	 device_name_m;
+		uint16_t	 weight_m;
+		uint16_t	 discharge_minimum_voltage_m;
+		uint16_t	 charging_minimum_voltage_m;
+		uint16_t	 resting_minimum_voltage_m;
+	mavlink_generator_status_t generator_status_m;
+		uint64_t	 status_m;
+		uint16_t	 generator_speed_m;
+		float	 battery_current_m;
+		float	 load_current_m;
+		float	 power_generated_m;
+		float	 bus_voltage_m;
+		int16_t	 rectifier_temperature_m;
+		float	 bat_current_setpoint_m;
+		int16_t	 generator_temperature_m;
+		uint32_t	 runtime_m;
+		int32_t	 time_until_maintenance_m;
+	mavlink_actuator_output_status_t actuator_output_status_m;
+		uint64_t	 time_usec_m;
+		uint32_t	 active_m;
+		float[32]	 actuator_m;
+	mavlink_time_estimate_to_target_t time_estimate_to_target_m;
+		int32_t	 safe_return_m;
+		int32_t	 land_m;
+		int32_t	 mission_next_item_m;
+		int32_t	 mission_end_m;
+		int32_t	 commanded_action_m;
+	mavlink_tunnel_t tunnel_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint16_t	 payload_type_m;
+		uint8_t	 payload_length_m;
+		uint8_t[128]	 payload_m;
+	mavlink_onboard_computer_status_t onboard_computer_status_m;
+		uint64_t	 time_usec_m;
+		uint32_t	 uptime_m;
+		uint8_t	 type_m;
+		uint8_t[8]	 cpu_cores_m;
+		uint8_t[10]	 cpu_combined_m;
+		uint8_t[4]	 gpu_cores_m;
+		uint8_t[10]	 gpu_combined_m;
+		int8_t	 temperature_board_m;
+		int8_t[8]	 temperature_core_m;
+		int16_t[4]	 fan_speed_m;
+		uint32_t	 ram_usage_m;
+		uint32_t	 ram_total_m;
+		uint32_t[4]	 storage_type_m;
+		uint32_t[4]	 storage_usage_m;
+		uint32_t[4]	 storage_total_m;
+		uint32_t[6]	 link_type_m;
+		uint32_t[6]	 link_tx_rate_m;
+		uint32_t[6]	 link_rx_rate_m;
+		uint32_t[6]	 link_tx_max_m;
+		uint32_t[6]	 link_rx_max_m;
+	mavlink_component_information_t component_information_m;
+		uint32_t	 time_boot_ms_m;
+		uint32_t	 general_metadata_file_crc_m;
+		char[100]	 general_metadata_uri_m;
+		uint32_t	 peripherals_metadata_file_crc_m;
+		char[100]	 peripherals_metadata_uri_m;
+	mavlink_play_tune_v2_t play_tune_v2_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint32_t	 format_m;
+		char[248]	 tune_m;
+	mavlink_supported_tunes_t supported_tunes_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint32_t	 format_m;
+	mavlink_wheel_distance_t wheel_distance_m;
+		uint64_t	 time_usec_m;
+		uint8_t	 count_m;
+		double[16]	 distance_m;
+	mavlink_winch_status_t winch_status_m;
+		uint64_t	 time_usec_m;
+		float	 line_length_m;
+		float	 speed_m;
+		float	 tension_m;
+		float	 voltage_m;
+		float	 current_m;
+		int16_t	 temperature_m;
+		uint32_t	 status_m;
+	mavlink_open_drone_id_basic_id_t open_drone_id_basic_id_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[20]	 id_or_mac_m;
+		uint8_t	 id_type_m;
+		uint8_t	 ua_type_m;
+		uint8_t[20]	 uas_id_m;
+	mavlink_open_drone_id_location_t open_drone_id_location_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[20]	 id_or_mac_m;
+		uint8_t	 status_m;
+		uint16_t	 direction_m;
+		uint16_t	 speed_horizontal_m;
+		int16_t	 speed_vertical_m;
+		int32_t	 latitude_m;
+		int32_t	 longitude_m;
+		float	 altitude_barometric_m;
+		float	 altitude_geodetic_m;
+		uint8_t	 height_reference_m;
+		float	 height_m;
+		uint8_t	 horizontal_accuracy_m;
+		uint8_t	 vertical_accuracy_m;
+		uint8_t	 barometer_accuracy_m;
+		uint8_t	 speed_accuracy_m;
+		float	 timestamp_m;
+		uint8_t	 timestamp_accuracy_m;
+	mavlink_open_drone_id_authentication_t open_drone_id_authentication_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[20]	 id_or_mac_m;
+		uint8_t	 authentication_type_m;
+		uint8_t	 data_page_m;
+		uint8_t	 page_count_m;
+		uint8_t	 length_m;
+		uint32_t	 timestamp_m;
+		uint8_t[23]	 authentication_data_m;
+	mavlink_open_drone_id_self_id_t open_drone_id_self_id_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[20]	 id_or_mac_m;
+		uint8_t	 description_type_m;
+		char[23]	 description_m;
+	mavlink_open_drone_id_system_t open_drone_id_system_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[20]	 id_or_mac_m;
+		uint8_t	 operator_location_type_m;
+		uint8_t	 classification_type_m;
+		int32_t	 operator_latitude_m;
+		int32_t	 operator_longitude_m;
+		uint16_t	 area_count_m;
+		uint16_t	 area_radius_m;
+		float	 area_ceiling_m;
+		float	 area_floor_m;
+		uint8_t	 category_eu_m;
+		uint8_t	 class_eu_m;
+	mavlink_open_drone_id_operator_id_t open_drone_id_operator_id_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t[20]	 id_or_mac_m;
+		uint8_t	 operator_id_type_m;
+		char[20]	 operator_id_m;
+	mavlink_open_drone_id_message_pack_t open_drone_id_message_pack_m;
+		uint8_t	 target_system_m;
+		uint8_t	 target_component_m;
+		uint8_t	 single_message_size_m;
+		uint8_t	 msg_pack_size_m;
+		uint8_t[250]	 messages_m;
+}
+#endif //MAVLINK_CONTAINER_HPP
